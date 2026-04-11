@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import { seedDemoUsers } from "./utils/seedDemoUsers.js";
 
 dotenv.config();
 
@@ -32,7 +33,11 @@ app.use("/api/admin", adminRoutes);
 
 // ✅ MongoDB Atlas connection
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Atlas Connected"))
+  .then(async () => {
+    console.log("✅ MongoDB Atlas Connected");
+    await seedDemoUsers();
+    console.log("✅ Demo users are ready");
+  })
   .catch(err => console.log("❌ DB Error:", err));
 
 // ✅ Server start
