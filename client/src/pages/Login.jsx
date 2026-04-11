@@ -6,10 +6,12 @@ import {
   Typography,
   Paper
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
@@ -19,9 +21,9 @@ export default function Login() {
       localStorage.setItem("role", res.data.role);
 
       if (res.data.role === "admin") {
-        window.location.href = "/admin";
+        navigate("/admin");
       } else {
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       }
     } catch {
       alert("Invalid credentials");
