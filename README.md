@@ -17,7 +17,7 @@ For testing and demonstration purposes, the following accounts have been pre-con
 * **User 2 Email:** `user2@test.in`
 * **Password:** `123456`
 
-> **Security Note:** These credentials are for local development and testing only. Never commit real, production passwords to a repository.
+
 
 
 
